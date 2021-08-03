@@ -10,7 +10,11 @@
     "prepublish": "tsc"
   },
   "devDependencies": {
+    "@types/node": "^16.4.10",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "ethers": "^5.4.3"
   }
 }
