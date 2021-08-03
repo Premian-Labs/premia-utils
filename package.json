@@ -1,0 +1,16 @@
+{
+  "name": "@premia/utils",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Premia",
+  "repository": "https://github.com/PremiaFinance/premia-utils.git",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
+  }
+}
