@@ -1,5 +1,4 @@
 import { BigNumber, BigNumberish, ethers } from 'ethers';
-import { parseUnits } from 'ethers/lib/utils';
 
 export function fixedFromBigNumber(bn: BigNumber) {
   return bn.abs().shl(64).mul(bn.abs().div(bn));
@@ -21,6 +20,6 @@ export function fixedToNumber(fixed: BigNumber) {
   return Number(integer) + Number(decimalsNumber) / 1e10;
 }
 
-export function fixedToBn(fixed: BigNumber, decimals = 18) {
-  return parseUnits(fixedToNumber(fixed).toString(), decimals);
+export function fixedToBn(bn64x64: BigNumber, decimals = 18): BigNumber {
+  return bn64x64.mul(BigNumber.from(10).pow(decimals)).shr(64);
 }
