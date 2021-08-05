@@ -12,12 +12,17 @@ export function fixedFromFloat(float: BigNumberish) {
 }
 
 export function fixedToNumber(fixed: BigNumber) {
+  const isNeg = fixed.lt(0);
+  if (isNeg) {
+    fixed = fixed.mul(-1);
+  }
   const integer = fixed.shr(64);
   const decimals = fixed.sub(integer.shl(64));
 
   const decimalsNumber = decimals.mul(1e10).div(BigNumber.from(1).shl(64));
 
-  return Number(integer) + Number(decimalsNumber) / 1e10;
+  const result = Number(integer) + Number(decimalsNumber) / 1e10;
+  return isNeg ? -result : result;
 }
 
 export function fixedToBn(bn64x64: BigNumber, decimals = 18): BigNumber {
